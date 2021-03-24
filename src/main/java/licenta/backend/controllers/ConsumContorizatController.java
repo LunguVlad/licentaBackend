@@ -1,0 +1,32 @@
+package licenta.backend.controllers;
+
+import licenta.backend.models.ConsumContorizat;
+import licenta.backend.models.FacturaApaNova;
+import licenta.backend.services.ConsumContorizatService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RequestMapping("/consum")
+@RestController
+public class ConsumContorizatController {
+    @Autowired
+    private ConsumContorizatService consumContorizatService;
+
+    @GetMapping
+    public ResponseEntity getAllFacturiApaNova(){
+        return ResponseEntity.ok(consumContorizatService.getAllConsumuriContorizate());
+    }
+
+    @PostMapping
+    public ResponseEntity createFacturaApaNova(@RequestBody ConsumContorizat consumContorizat){
+        try {
+            consumContorizatService.addConsum(consumContorizat);
+            return ResponseEntity.ok(true);
+        }catch (Exception ex){
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+}

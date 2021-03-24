@@ -18,13 +18,30 @@ public class User {
     private int phoneNumber;
     private int accountType;
     private int scara;
+    @Column(unique = true)
     private int apartament;
+    private int nrPersoane;
+    private double cotaIndiviza;
 
 
 
 
     public User(){
 
+    }
+
+    public User(int id, String lastName, String firstName, String email, String password, int phoneNumber, int accountType, int scara, int apartament, int nrPersoane, double cotaIndiviza) {
+        this.id = id;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.accountType = accountType;
+        this.scara = scara;
+        this.apartament = apartament;
+        this.nrPersoane = nrPersoane;
+        this.cotaIndiviza = cotaIndiviza;
     }
 
     public User(int id, String lastName, String firstName, String email, String password, int phoneNumber, int accountType, int scara, int apartament) {
@@ -57,6 +74,22 @@ public class User {
         sb.append(", password='").append(password).append('\'');
         sb.append('}');
         return sb.toString();
+    }
+
+    public int getNrPersoane() {
+        return nrPersoane;
+    }
+
+    public void setNrPersoane(int nrPersoane) {
+        this.nrPersoane = nrPersoane;
+    }
+
+    public double getCotaIndiviza() {
+        return cotaIndiviza;
+    }
+
+    public void setCotaIndiviza(double cotaIndiviza) {
+        this.cotaIndiviza = cotaIndiviza;
     }
 
     public int getPhoneNumber() {
