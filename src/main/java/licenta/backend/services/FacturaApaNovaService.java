@@ -22,7 +22,7 @@ public class FacturaApaNovaService {
         return facturiApaNova;
     }
 
-    public int createUser(FacturaApaNova factura) {
+    public int createFactura(FacturaApaNova factura) {
         factura.setTarif();
         System.out.println(factura);
         facturaApaNovaDao.save(factura);

@@ -54,4 +54,9 @@ public class UserService {
 
         return 1;
     }
+
+    public List<User> getUsersByScara(int scara) {
+        System.out.println("USERSERVICE");
+        return userDao.findByScara(scara);
+    }
 }

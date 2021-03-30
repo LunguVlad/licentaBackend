@@ -43,6 +43,15 @@ public class UserController {
         }
     }
 
+    @GetMapping("{scara}")
+    public ResponseEntity getUsersByScara(@PathVariable int scara){
+        try{
+            return ResponseEntity.ok(userService.getUsersByScara(scara));
+        }catch (NullPointerException nullPointerException){
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping(path = "createUser")
     public ResponseEntity createUser(@RequestBody User user){
         try {
@@ -60,4 +69,6 @@ public class UserController {
         return ResponseEntity.ok(true);
 
     }
+
+
 }

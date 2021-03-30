@@ -26,7 +26,7 @@ public class FacturaApaNovaController {
     public ResponseEntity createFacturaApaNova(@RequestBody FacturaApaNova facturaApaNova){
         try {
             System.out.println(facturaApaNova);
-            facturaApaNovaService.createUser(facturaApaNova);
+            facturaApaNovaService.createFactura(facturaApaNova);
             return ResponseEntity.ok(true);
         }catch (Exception ex){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
