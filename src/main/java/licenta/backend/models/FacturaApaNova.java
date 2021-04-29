@@ -21,7 +21,6 @@ public class FacturaApaNova {
     //apa calda
 
     public FacturaApaNova(){
-        System.out.println("NO PARAMS");
     }
 
 
