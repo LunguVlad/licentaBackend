@@ -22,6 +22,7 @@ public class User {
     private int apartament;
     private int nrPersoane;
     private double cotaIndiviza;
+    //boolean centrala??
 
 
 

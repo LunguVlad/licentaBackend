@@ -59,4 +59,10 @@ public class UserService {
         System.out.println("USERSERVICE");
         return userDao.findByScara(scara);
     }
+
+    public User getUserByAccount(String email, String password) {
+        User user  = userDao.findByEmailAndPassword(email,password);
+        System.out.println(user);
+        return user;
+    }
 }

@@ -1,6 +1,7 @@
 package licenta.backend.controllers;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import licenta.backend.daos.UserDao;
 import licenta.backend.models.User;
 import licenta.backend.services.UserService;
@@ -29,6 +30,17 @@ public class UserController {
     public ResponseEntity getUserByEmail(@PathVariable String email){
         try {
             return ResponseEntity.ok(userService.getUserByEmail(email));
+        }catch (NullPointerException ex){
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/login/pls")
+    public ResponseEntity getUserByAccount(@RequestBody User user){
+        try{
+            System.out.println(user.getEmail());
+            System.out.println(user.getPassword());
+            return ResponseEntity.ok(userService.getUserByAccount(user.getEmail(),user.getPassword()));
         }catch (NullPointerException ex){
             return ResponseEntity.notFound().build();
         }
@@ -69,6 +81,8 @@ public class UserController {
         return ResponseEntity.ok(true);
 
     }
+
+
 
 
 }
