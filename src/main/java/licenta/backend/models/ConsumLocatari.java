@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "consum_locatari")
 public class ConsumLocatari {
     @Id
+    @GeneratedValue
     private int id;
 
     private String luna;

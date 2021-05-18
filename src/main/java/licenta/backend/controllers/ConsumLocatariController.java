@@ -1,28 +1,29 @@
 package licenta.backend.controllers;
 
 import licenta.backend.models.ConsumContorizat;
-import licenta.backend.models.FacturaApaNova;
+import licenta.backend.models.ConsumLocatari;
 import licenta.backend.services.ConsumContorizatService;
+import licenta.backend.services.ConsumLocatariService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/consum/contor")
+@RequestMapping("consum/locatar")
 @RestController
-public class ConsumContorizatController {
+public class ConsumLocatariController {
     @Autowired
-    private ConsumContorizatService consumContorizatService;
+    private ConsumLocatariService consumLocatariService;
 
     @GetMapping
-    public ResponseEntity getAllFacturiApaNova(){
-        return ResponseEntity.ok(consumContorizatService.getAllConsumuriContorizate());
+    public ResponseEntity getAllConsumuriLocatari(){
+        return ResponseEntity.ok(consumLocatariService.getAllConsumuriLocatari());
     }
 
     @PostMapping
-    public ResponseEntity createFacturaApaNova(@RequestBody ConsumContorizat consumContorizat){
+    public ResponseEntity createFacturaApaNova(@RequestBody ConsumLocatari consumLocatari){
         try {
-            consumContorizatService.addConsum(consumContorizat);
+            consumLocatariService.addConsum(consumLocatari);
             return ResponseEntity.ok(true);
         }catch (Exception ex){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
