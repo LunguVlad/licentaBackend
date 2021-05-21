@@ -2,6 +2,7 @@ package licenta.backend.services;
 
 import licenta.backend.daos.ConsumLocatariDao;
 import licenta.backend.models.ConsumLocatari;
+import licenta.backend.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,8 @@ public class ConsumLocatariService {
 
     @Autowired
     private ConsumLocatariDao consumLocatariDao;
+    @Autowired
+    private UserService userService;
 
     public List<ConsumLocatari> getAllConsumuriLocatari() {
         List<ConsumLocatari> consumuriLocatari = new ArrayList<>();
@@ -21,7 +24,12 @@ public class ConsumLocatariService {
     }
 
 
-    public int addConsum(ConsumLocatari consumLocatari) {
+    public int addConsum(ConsumLocatari consumLocatari, Integer userId) {
+
+        User user = userService.getUserById(userId);
+
+        consumLocatari.setUser(user);
+
         consumLocatariDao.save(consumLocatari);
         return 1;
     }

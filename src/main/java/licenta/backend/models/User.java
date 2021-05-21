@@ -1,10 +1,12 @@
 package licenta.backend.models;
 
 import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
 
 @Entity
 @Table(name="[user]")
-public class User {
+public class User implements Serializable {
 //    public final int ADMINISTRATOR = 0;
 //    public final int LOCATAR = 1;
 

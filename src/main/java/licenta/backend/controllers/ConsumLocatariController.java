@@ -20,10 +20,10 @@ public class ConsumLocatariController {
         return ResponseEntity.ok(consumLocatariService.getAllConsumuriLocatari());
     }
 
-    @PostMapping
-    public ResponseEntity createFacturaApaNova(@RequestBody ConsumLocatari consumLocatari){
+    @PostMapping("/create/{userId}")
+    public ResponseEntity createFacturaApaNova(@RequestBody ConsumLocatari consumLocatari, @PathVariable Integer userId){
         try {
-            consumLocatariService.addConsum(consumLocatari);
+            consumLocatariService.addConsum(consumLocatari,userId);
             return ResponseEntity.ok(true);
         }catch (Exception ex){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

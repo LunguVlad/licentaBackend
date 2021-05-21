@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -64,5 +65,13 @@ public class UserService {
         User user  = userDao.findByEmailAndPassword(email,password);
         System.out.println(user);
         return user;
+    }
+
+    public User getUserById(Integer userId) {
+        Optional<User> user = userDao.findById(userId);
+        if(user.isPresent()){
+            return user.get();
+        }
+        return null;
     }
 }
