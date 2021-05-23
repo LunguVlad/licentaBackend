@@ -72,4 +72,12 @@ public class FacturaEnel {
     public void setValoareScara3(double valoareScara3) {
         this.valoareScara3 = valoareScara3;
     }
+
+    public double getValoareTotala() {
+        return valoareTotala;
+    }
+
+    public void setValoareTotala() {
+        this.valoareTotala = this.valoareScara1 + this.valoareScara2 + this.valoareScara3;
+    }
 }

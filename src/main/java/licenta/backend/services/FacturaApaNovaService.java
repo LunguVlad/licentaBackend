@@ -7,6 +7,7 @@ import licenta.backend.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +25,13 @@ public class FacturaApaNovaService {
 
     public int createFactura(FacturaApaNova factura) {
         factura.setTarif();
-        System.out.println(factura);
+        factura.setLuna(String.valueOf(LocalDate.now().getMonthValue()));
+        factura.setAn(String.valueOf(LocalDate.now().getYear()));
         facturaApaNovaDao.save(factura);
         return 1;
+    }
+
+    public FacturaApaNova getFacturaByLunaAndAn(String luna, String an) {
+        return facturaApaNovaDao.findByLunaAndAn(luna,an);
     }
 }

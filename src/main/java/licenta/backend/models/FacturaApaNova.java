@@ -2,7 +2,6 @@ package licenta.backend.models;
 
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name="factura_apa_nova")
@@ -13,34 +12,67 @@ public class FacturaApaNova {
     private int id;
     private String luna;
     private String an;
-    private double pretConsumApaRece;
-    private double pretConsumRestant;
-    private double consumFacturat;
-    private double tarif;
 
     //apa calda
+    private double pretConsumApaRece;
+    private double pretConsumApaReceRestant;
+    private double consumFacturatApaRece;
+    private double tarifApaRece;
+
+    //apa calda
+    private double pretConsumApaCalda;
+    private double pretConsumApaCaldaRestant;
+    private double consumFacturatApaCalda;
+    private double tarifApaCalda;
 
     public FacturaApaNova(){
     }
 
 
-    private double calculTarif() {
-        return (this.pretConsumApaRece + this.pretConsumRestant) / this.consumFacturat;
+    private double calculTarifApaRece() {
+        return this.pretConsumApaRece / this.consumFacturatApaRece;
     }
 
-    public FacturaApaNova(int id, String luna, String an, double pretConsumApaRece, double pretConsumRestant, double consumFacturat) {
-        this.id = id;
-        this.luna = luna;
-        this.an = an;
-        this.pretConsumApaRece = pretConsumApaRece;
-        this.pretConsumRestant = pretConsumRestant;
-        this.consumFacturat = consumFacturat;
-        this.tarif = this.calculTarif();
-
-        System.out.println("PARAMS");
+    private double calculTarifApaCalda() {
+        return this.pretConsumApaCalda / this.consumFacturatApaCalda;
     }
 
 
+    public double getPretConsumApaCaldaRestant() {
+        return pretConsumApaCaldaRestant;
+    }
+
+    public void setPretConsumApaCaldaRestant(double pretConsumApaCaldaRestant) {
+        this.pretConsumApaCaldaRestant = pretConsumApaCaldaRestant;
+    }
+
+    public double getConsumFacturatApaCalda() {
+        return consumFacturatApaCalda;
+    }
+
+    public void setConsumFacturatApaCalda(double consumFacturatApaCalda) {
+        this.consumFacturatApaCalda = consumFacturatApaCalda;
+    }
+
+    public double getTarifApaCalda() {
+        return tarifApaCalda;
+    }
+
+    public void setTarifApaCalda(double tarifApaCalda) {
+        this.tarifApaCalda = tarifApaCalda;
+    }
+
+    public double getPretConsumApaCalda() {
+        return pretConsumApaCalda;
+    }
+
+    public void setPretConsumApaCalda(double pretConsumApaCalda) {
+        this.pretConsumApaCalda = pretConsumApaCalda;
+    }
+
+    public void setTarifApaRece(double tarif) {
+        this.tarifApaRece = tarif;
+    }
 
     public int getId() {
         return id;
@@ -74,28 +106,29 @@ public class FacturaApaNova {
         this.pretConsumApaRece = pretConsumApaRece;
     }
 
-    public double getPretConsumRestant() {
-        return pretConsumRestant;
+    public double getPretConsumApaReceRestant() {
+        return pretConsumApaReceRestant;
     }
 
-    public void setPretConsumRestant(double pretConsumRestant) {
-        this.pretConsumRestant = pretConsumRestant;
+    public void setPretConsumApaReceRestant(double pretConsumRestant) {
+        this.pretConsumApaReceRestant = pretConsumRestant;
     }
 
-    public double getConsumFacturat() {
-        return consumFacturat;
+    public double getConsumFacturatApaRece() {
+        return consumFacturatApaRece;
     }
 
-    public void setConsumFacturat(double consumFacturat) {
-        this.consumFacturat = consumFacturat;
+    public void setConsumFacturatApaRece(double consumFacturat) {
+        this.consumFacturatApaRece = consumFacturat;
     }
 
-    public double getTarif() {
-        return tarif;
+    public double getTarifApaRece() {
+        return tarifApaRece;
     }
 
     public void setTarif() {
-        this.tarif = calculTarif();
+        this.tarifApaRece = calculTarifApaRece();
+        this.tarifApaCalda = calculTarifApaCalda();
     }
 
     @Override
@@ -105,9 +138,9 @@ public class FacturaApaNova {
         sb.append(", luna='").append(luna).append('\'');
         sb.append(", an='").append(an).append('\'');
         sb.append(", pretConsumApaRece=").append(pretConsumApaRece);
-        sb.append(", pretConsumRestant=").append(pretConsumRestant);
-        sb.append(", consumFacturat=").append(consumFacturat);
-        sb.append(", tarif=").append(tarif);
+        sb.append(", pretConsumRestant=").append(pretConsumApaReceRestant);
+        sb.append(", consumFacturat=").append(consumFacturatApaRece);
+        sb.append(", tarif=").append(tarifApaRece);
         sb.append('}');
         return sb.toString();
     }

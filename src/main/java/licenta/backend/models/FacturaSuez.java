@@ -75,7 +75,7 @@ public class FacturaSuez {
         return valoareTotala;
     }
 
-    public void setValoareTotala(double valoareTotala) {
-        this.valoareTotala = valoareTotala;
+    public void setValoareTotala() {
+        this.valoareTotala = this.valoareScara1 + this.valoareScara2 + this.valoareScara3;
     }
 }

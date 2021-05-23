@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface FacturaApaNovaDao extends CrudRepository<FacturaApaNova,Integer> {
 
+    FacturaApaNova findByLunaAndAn(String luna, String an);
 }

@@ -12,28 +12,26 @@ public class ListaPlata {
 
 
     //Cheltiuieli comune/nrPers
-    private float enel;
-    private  float gaze;
+    private double enelRebu; //enel + rebu /nrPers
+    private double gaze;
 
     //Consumuri contorizate
-    private float apaRece;
-    private float apaCalda;
-    private float diferentaApaRece;
-    private float diferentaApaCalda;
+    private double apaRece;
+    private double apaCalda;
+    private double diferentaApaRece;
+    private double diferentaApaCalda;
 
-    //Chelt comune/ nr ap
-    private float cheltuieliRepartizatePeApartament;
+    //Chelt comune/ nr pers
+    private double cheltuieliRepartizatePeApartament;
 
     //Chelt comune / cota indiviza
-    private float cheltuieliComunePeCotaIndiviza;
+    private double cheltuieliComunePeCotaIndiviza;
 
-    private float cheltuieliIntretinere;
+    private double restanteInteretinere;
 
-    private float restanteInteretinere;
+    private double penalizari;
 
-    private float penalizari;
-
-    private float totalPlata;
+    private double totalPlata;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -67,99 +65,91 @@ public class ListaPlata {
         this.an = an;
     }
 
-    public float getEnel() {
-        return enel;
+    public double getEnelRebu() {
+        return enelRebu;
     }
 
-    public void setEnel(float enel) {
-        this.enel = enel;
+    public void setEnelRebu(double enel) {
+        this.enelRebu = enel;
     }
 
-    public float getGaze() {
+    public double getGaze() {
         return gaze;
     }
 
-    public void setGaze(float gaze) {
+    public void setGaze(double gaze) {
         this.gaze = gaze;
     }
 
-    public float getApaRece() {
+    public double getApaRece() {
         return apaRece;
     }
 
-    public void setApaRece(float apaRece) {
+    public void setApaRece(double apaRece) {
         this.apaRece = apaRece;
     }
 
-    public float getApaCalda() {
+    public double getApaCalda() {
         return apaCalda;
     }
 
-    public void setApaCalda(float apaCalda) {
+    public void setApaCalda(double apaCalda) {
         this.apaCalda = apaCalda;
     }
 
-    public float getDiferentaApaRece() {
+    public double getDiferentaApaRece() {
         return diferentaApaRece;
     }
 
-    public void setDiferentaApaRece(float diferentaApaRece) {
+    public void setDiferentaApaRece(double diferentaApaRece) {
         this.diferentaApaRece = diferentaApaRece;
     }
 
-    public float getDiferentaApaCalda() {
+    public double getDiferentaApaCalda() {
         return diferentaApaCalda;
     }
 
-    public void setDiferentaApaCalda(float diferentaApaCalda) {
+    public void setDiferentaApaCalda(double diferentaApaCalda) {
         this.diferentaApaCalda = diferentaApaCalda;
     }
 
-    public float getCheltuieliRepartizatePeApartament() {
+    public double getCheltuieliRepartizatePeApartament() {
         return cheltuieliRepartizatePeApartament;
     }
 
-    public void setCheltuieliRepartizatePeApartament(float cheltuieliRepartizatePeApartament) {
+    public void setCheltuieliRepartizatePeApartament(double cheltuieliRepartizatePeApartament) {
         this.cheltuieliRepartizatePeApartament = cheltuieliRepartizatePeApartament;
     }
 
-    public float getCheltuieliComunePeCotaIndiviza() {
+    public double getCheltuieliComunePeCotaIndiviza() {
         return cheltuieliComunePeCotaIndiviza;
     }
 
-    public void setCheltuieliComunePeCotaIndiviza(float cheltuieliComunePeCotaIndiviza) {
+    public void setCheltuieliComunePeCotaIndiviza(double cheltuieliComunePeCotaIndiviza) {
         this.cheltuieliComunePeCotaIndiviza = cheltuieliComunePeCotaIndiviza;
     }
 
-    public float getCheltuieliIntretinere() {
-        return cheltuieliIntretinere;
-    }
-
-    public void setCheltuieliIntretinere(float cheltuieliIntretinere) {
-        this.cheltuieliIntretinere = cheltuieliIntretinere;
-    }
-
-    public float getRestanteInteretinere() {
+    public double getRestanteInteretinere() {
         return restanteInteretinere;
     }
 
-    public void setRestanteInteretinere(float restanteInteretinere) {
+    public void setRestanteInteretinere(double restanteInteretinere) {
         this.restanteInteretinere = restanteInteretinere;
     }
 
-    public float getPenalizari() {
+    public double getPenalizari() {
         return penalizari;
     }
 
-    public void setPenalizari(float penalizari) {
+    public void setPenalizari(double penalizari) {
         this.penalizari = penalizari;
     }
 
-    public float getTotalPlata() {
+    public double getTotalPlata() {
         return totalPlata;
     }
 
-    public void setTotalPlata(float totalPlata) {
+    public void setTotalPlata(double totalPlata) {
         this.totalPlata = totalPlata;
     }
 

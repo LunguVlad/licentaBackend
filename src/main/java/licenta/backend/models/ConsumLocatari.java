@@ -42,6 +42,14 @@ public class ConsumLocatari {
         this.user = user;
     }
 
+    public double getConsumTotalApaCalda(){
+        return this.apaCaldaBaieMare + this.apaCaldaBaieMica + this.apaCaldaBucatarie;
+    }
+
+    public double getConsumTotalApaRece(){
+        return this.apaReceBaieMare + this.apaReceBaieMica + this.apaReceBucatarie;
+    }
+
     public int getId() {
         return id;
     }

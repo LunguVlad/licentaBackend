@@ -22,10 +22,9 @@ public class FacturaApaNovaController {
         return ResponseEntity.ok(facturaApaNovaService.getAllFacturiApaNova());
     }
 
-    @PostMapping
+    @PostMapping("create")
     public ResponseEntity createFacturaApaNova(@RequestBody FacturaApaNova facturaApaNova){
         try {
-            System.out.println(facturaApaNova);
             facturaApaNovaService.createFactura(facturaApaNova);
             return ResponseEntity.ok(true);
         }catch (Exception ex){

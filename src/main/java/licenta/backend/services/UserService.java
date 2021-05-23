@@ -74,4 +74,9 @@ public class UserService {
         }
         return null;
     }
+
+    public User getUserByApartament(Integer apartament){
+        User user = userDao.findByApartament(apartament);
+        return user;
+    }
 }

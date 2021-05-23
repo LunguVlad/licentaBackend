@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FacturaRebuDao extends CrudRepository<FacturaRebu,Integer> {
+    FacturaRebu findByLunaAndAn(String luna, String an);
 }

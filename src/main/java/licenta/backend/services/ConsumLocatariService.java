@@ -33,4 +33,8 @@ public class ConsumLocatariService {
         consumLocatariDao.save(consumLocatari);
         return 1;
     }
+
+    public ConsumLocatari getConsumByLunaAnUser(String luna, String an, User user){
+        return consumLocatariDao.findByLunaAndAnAndApartament(luna,an,user.getApartament());
+    }
 }

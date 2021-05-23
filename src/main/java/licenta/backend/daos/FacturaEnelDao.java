@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface FacturaEnelDao extends CrudRepository<FacturaEnel,Integer> {
 
+    FacturaEnel findByLunaAndAn(String luna, String an);
 }

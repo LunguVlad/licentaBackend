@@ -20,7 +20,6 @@ public class FacturaRebuController {
     @PostMapping(path = "createFactura")
     public ResponseEntity createFactura(@RequestBody FacturaRebu facturaRebu){
         try {
-            System.out.println("DA");
             facturaRebuService.createFactura(facturaRebu);
             return ResponseEntity.ok(true);
         }catch (Exception ex){

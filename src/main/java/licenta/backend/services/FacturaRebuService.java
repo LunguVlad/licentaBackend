@@ -17,7 +17,6 @@ public class FacturaRebuService {
 
 
     public int createFactura(FacturaRebu facturaRebu) {
-        System.out.println("SALUT");
         this.calculeazaValoareScariSiLocatar(facturaRebu);
         facturaRebuDao.save(facturaRebu);
         return 1;
@@ -55,5 +54,9 @@ public class FacturaRebuService {
             return facturaRebu;
         }
 
+    }
+
+    public FacturaRebu getFacturaByLunaAndAn(String luna, String an) {
+        return facturaRebuDao.findByLunaAndAn(luna,an);
     }
 }

@@ -17,9 +17,15 @@ public class ConsumContorizat {
     private double consumApaReceScara3;
     private double consumApaReceMenajer;
 
+    private double consumApaCaldaScara1;
+    private double consumApaCaldaScara2;
+    private double consumApaCaldaScara3;
+    private double consumApaCaldaMenajer;
+
     public ConsumContorizat(){
 
     }
+
 
 
     public ConsumContorizat(int id, String luna, String an, double consumApaReceScara1, double consumApaReceScara2, double consumApaReceScara3, double consumApaReceMenajer) {
@@ -30,6 +36,39 @@ public class ConsumContorizat {
         this.consumApaReceScara2 = consumApaReceScara2;
         this.consumApaReceScara3 = consumApaReceScara3;
         this.consumApaReceMenajer = consumApaReceMenajer;
+    }
+
+
+    public double getConsumApaCaldaScara1() {
+        return consumApaCaldaScara1;
+    }
+
+    public void setConsumApaCaldaScara1(double consumApaCaldaScara1) {
+        this.consumApaCaldaScara1 = consumApaCaldaScara1;
+    }
+
+    public double getConsumApaCaldaScara2() {
+        return consumApaCaldaScara2;
+    }
+
+    public void setConsumApaCaldaScara2(double consumApaCaldaScara2) {
+        this.consumApaCaldaScara2 = consumApaCaldaScara2;
+    }
+
+    public double getConsumApaCaldaScara3() {
+        return consumApaCaldaScara3;
+    }
+
+    public void setConsumApaCaldaScara3(double consumApaCaldaScara3) {
+        this.consumApaCaldaScara3 = consumApaCaldaScara3;
+    }
+
+    public double getConsumApaCaldaMenajer() {
+        return consumApaCaldaMenajer;
+    }
+
+    public void setConsumApaCaldaMenajer(double consumApaCaldaMenajer) {
+        this.consumApaCaldaMenajer = consumApaCaldaMenajer;
     }
 
     public int getId() {
