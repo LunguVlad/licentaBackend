@@ -79,4 +79,10 @@ public class UserService {
         User user = userDao.findByApartament(apartament);
         return user;
     }
+
+    public double getCotaIndivizaScara(int numarScara){
+        double cotaIndiviza = 0;
+        cotaIndiviza = userDao.findByScara(numarScara).stream().mapToDouble(User::getCotaIndiviza).sum();
+        return cotaIndiviza;
+    }
 }

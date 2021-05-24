@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name= "lista_plata")
 public class ListaPlata {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String luna;
     private String an;
@@ -159,5 +160,27 @@ public class ListaPlata {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("ListaPlata{");
+        sb.append("id=").append(id);
+        sb.append(", luna='").append(luna).append('\'');
+        sb.append(", an='").append(an).append('\'');
+        sb.append(", enelRebu=").append(enelRebu);
+        sb.append(", gaze=").append(gaze);
+        sb.append(", apaRece=").append(apaRece);
+        sb.append(", apaCalda=").append(apaCalda);
+        sb.append(", diferentaApaRece=").append(diferentaApaRece);
+        sb.append(", diferentaApaCalda=").append(diferentaApaCalda);
+        sb.append(", cheltuieliRepartizatePeApartament=").append(cheltuieliRepartizatePeApartament);
+        sb.append(", cheltuieliComunePeCotaIndiviza=").append(cheltuieliComunePeCotaIndiviza);
+        sb.append(", restanteInteretinere=").append(restanteInteretinere);
+        sb.append(", penalizari=").append(penalizari);
+        sb.append(", totalPlata=").append(totalPlata);
+        sb.append(", user=").append(user);
+        sb.append('}');
+        return sb.toString();
     }
 }

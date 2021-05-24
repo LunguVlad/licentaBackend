@@ -6,6 +6,7 @@ import licenta.backend.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -18,6 +19,8 @@ public class FacturaRebuService {
 
     public int createFactura(FacturaRebu facturaRebu) {
         this.calculeazaValoareScariSiLocatar(facturaRebu);
+        facturaRebu.setLuna(String.valueOf(LocalDate.now().getMonthValue()));
+        facturaRebu.setAn(String.valueOf(LocalDate.now().getYear()));
         facturaRebuDao.save(facturaRebu);
         return 1;
     }

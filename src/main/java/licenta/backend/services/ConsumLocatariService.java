@@ -35,6 +35,6 @@ public class ConsumLocatariService {
     }
 
     public ConsumLocatari getConsumByLunaAnUser(String luna, String an, User user){
-        return consumLocatariDao.findByLunaAndAnAndApartament(luna,an,user.getApartament());
+        return consumLocatariDao.findByLunaAndAnAndUser(luna,an,user);
     }
 }

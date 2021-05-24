@@ -30,7 +30,8 @@ public class ListPlataService {
     private final int SCARA_2 = 2;
     private final int SCARA_3 = 3;
 
-    public void createLista(ListaPlata listaPlata, int apartament){
+    public void createLista(int apartament){
+        ListaPlata listaPlata = new ListaPlata();
         User user = userService.getUserByApartament(apartament);
         listaPlata.setLuna(String.valueOf(LocalDate.now().getMonthValue()));
         listaPlata.setAn(String.valueOf(LocalDate.now().getYear()));
@@ -46,9 +47,16 @@ public class ListPlataService {
         FacturaRebu facturaRebu = facturaRebuService.getFacturaByLunaAndAn(listaPlata.getLuna(),listaPlata.getAn());
 
         if(user.getScara() == SCARA_1){
-            int nrPersoaneScara = userService.getUsersByScara(SCARA_1).size();
-            double tarifFacturaEnelPePersoana = facturaEnel.getValoareScara1() / nrPersoaneScara;
+            System.out.println("Am intrat pe if");
+            int nrPersoaneScara = userService.getUsersByScara(SCARA_1).stream().mapToInt(User::getNrPersoane).sum();
+            System.out.println("NrPERSOANE");
+            System.out.println(nrPersoaneScara);
+            double tarifFacturaEnelPePersoana = facturaEnel.getValoareScara1() / (double) nrPersoaneScara;
+            System.out.println(tarifFacturaEnelPePersoana);
             double tarifFacturaRebuPePersoana = facturaRebu.getValoarePeLocatar();
+            System.out.println(tarifFacturaRebuPePersoana);
+
+            System.out.println("2nd block");
 
             double enelRebu = tarifFacturaEnelPePersoana * user.getNrPersoane() + tarifFacturaRebuPePersoana * user.getNrPersoane();
             listaPlata.setEnelRebu(enelRebu);
@@ -68,7 +76,28 @@ public class ListPlataService {
             //DACA E NULL CONSUMUL ANTERIOR => E PRIMA INCARCARE DECI RAMANE ASTA
             //DACA CONSUMUL ACTUAL = CONSUMUL ANTERIOR => ATUNCI PUNEM CONSUMUL INREGISTRAT LUNA ANTERIOARA IN LISTA DE PLATA
 
+            System.out.println("Aici sigur ajunge");
             ConsumLocatari consumUserLunaAnterioara = consumLocatariService.getConsumByLunaAnUser(""+dataActuala.minusMonths(1).getMonthValue(),""+dataActuala.minusMonths(1).getYear(),user);
+            System.out.println("alo?");
+            if(consumUserLunaAnterioara != null) {
+                System.out.println("PE IF consum != null");
+                double apaRece = consumUserLunaAnterioara.getConsumTotalApaRece() - consumUserApaRece;
+                double apaCalda = consumUserLunaAnterioara.getConsumTotalApaCalda() - consumUserApaCalda;
+                listaPlata.setApaRece(apaRece);
+                listaPlata.setApaCalda(apaCalda);
+            }
+            else{
+                System.out.println("Am intrat pe else");
+                double apaRece = consumUserApaRece;
+                double apaCalda = consumUserApaCalda;
+                listaPlata.setApaRece(apaRece);
+                listaPlata.setApaCalda(apaCalda);
+            }
+
+            System.out.println(listaPlata);
+            //cheltuieli
+
+            listaPlataDao.save(listaPlata);
         }
 
 
