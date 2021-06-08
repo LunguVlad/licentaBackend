@@ -24,7 +24,7 @@ public class User implements Serializable {
     private int apartament;
     private int nrPersoane;
     private double cotaIndiviza;
-    //boolean centrala??
+    boolean centrala;
 
 
 
@@ -32,6 +32,8 @@ public class User implements Serializable {
     public User(){
 
     }
+
+
 
     public User(int id, String lastName, String firstName, String email, String password, int phoneNumber, int accountType, int scara, int apartament, int nrPersoane, double cotaIndiviza) {
         this.id = id;
@@ -77,6 +79,14 @@ public class User implements Serializable {
         sb.append(", password='").append(password).append('\'');
         sb.append('}');
         return sb.toString();
+    }
+
+    public boolean isCentrala() {
+        return centrala;
+    }
+
+    public void setCentrala(boolean centrala) {
+        this.centrala = centrala;
     }
 
     public int getNrPersoane() {

@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="factura_enel")
+@Table(name="Blfactura_enel")
 public class FacturaEnel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

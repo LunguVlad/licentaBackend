@@ -22,7 +22,7 @@ public class ListaPlata {
     private double diferentaApaRece;
     private double diferentaApaCalda;
 
-    //Chelt comune/ nr pers
+    //Chelt comune/ NUMAR DE APARTAMENTE
     private double cheltuieliRepartizatePeApartament;
 
     //Chelt comune / cota indiviza
