@@ -2,7 +2,6 @@ package licenta.backend.services;
 
 import licenta.backend.daos.ListaPlataDao;
 import licenta.backend.models.*;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +22,6 @@ public class ListPlataService {
     private FacturaApaNovaService facturaApaNovaService;
     @Autowired
     private ConsumLocatariService consumLocatariService;
-    @Autowired
-    private FacturaRebuService facturaRebuService;
 
     private final int SCARA_1 = 1;
     private final int SCARA_2 = 2;
@@ -44,7 +41,6 @@ public class ListPlataService {
         FacturaSuez facturaSuez = facturaSuezService.getFacturaByLunaAndAn(listaPlata.getLuna(),listaPlata.getAn());
         FacturaApaNova facturaApaNova = facturaApaNovaService.getFacturaByLunaAndAn(listaPlata.getLuna(),listaPlata.getAn());
         ConsumLocatari consumLocatari = consumLocatariService.getConsumByLunaAnUser(listaPlata.getLuna(),listaPlata.getAn(),user);
-        FacturaRebu facturaRebu = facturaRebuService.getFacturaByLunaAndAn(listaPlata.getLuna(),listaPlata.getAn());
 
         if(user.getScara() == SCARA_1){
             System.out.println("Am intrat pe if");
@@ -53,13 +49,11 @@ public class ListPlataService {
             System.out.println(nrPersoaneScara);
             double tarifFacturaEnelPePersoana = facturaEnel.getValoareScara1() / (double) nrPersoaneScara;
             System.out.println(tarifFacturaEnelPePersoana);
-            double tarifFacturaRebuPePersoana = facturaRebu.getValoarePeLocatar();
-            System.out.println(tarifFacturaRebuPePersoana);
 
             System.out.println("2nd block");
 
-            double enelRebu = tarifFacturaEnelPePersoana * user.getNrPersoane() + tarifFacturaRebuPePersoana * user.getNrPersoane();
-            listaPlata.setEnelRebu(enelRebu);
+            double enel = tarifFacturaEnelPePersoana * user.getNrPersoane() + user.getNrPersoane();
+            listaPlata.setEnelRebu(enel);
 
             double tarifFacturaSuezPePersoana = facturaSuez.getValoareScara1() / nrPersoaneScara;
 

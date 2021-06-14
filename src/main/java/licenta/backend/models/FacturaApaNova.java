@@ -25,6 +25,9 @@ public class FacturaApaNova {
     private double consumFacturatApaCalda;
     private double tarifApaCalda;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bloc" , referencedColumnName = "numarBloc")
+    private Bloc bloc;
     public FacturaApaNova(){
     }
 

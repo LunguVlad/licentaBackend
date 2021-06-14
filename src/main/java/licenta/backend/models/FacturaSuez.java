@@ -15,6 +15,10 @@ public class FacturaSuez {
     private double valoareScara3;
     private double valoareTotala;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bloc" , referencedColumnName = "numarBloc")
+    private Bloc bloc;
+
     public FacturaSuez() {
 
     }

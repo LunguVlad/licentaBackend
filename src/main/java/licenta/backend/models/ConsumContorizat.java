@@ -22,6 +22,11 @@ public class ConsumContorizat {
     private double consumApaCaldaScara3;
     private double consumApaCaldaMenajer;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bloc" , referencedColumnName = "numarBloc")
+    private Bloc bloc;
+
+
     public ConsumContorizat(){
 
     }
