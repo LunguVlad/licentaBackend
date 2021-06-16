@@ -14,8 +14,11 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private BlocService blocService;
 
-    public int createUser(User user) {
+    public int createUser(User user, int numarBloc) {
+        user.setBloc(blocService.getBloc(numarBloc));
         userDao.save(user);
         return 1;
     }
@@ -84,5 +87,9 @@ public class UserService {
         double cotaIndiviza = 0;
         cotaIndiviza = userDao.findByScara(numarScara).stream().mapToDouble(User::getCotaIndiviza).sum();
         return cotaIndiviza;
+    }
+
+    public List<User> getUsersByBloc(int numarBloc) {
+        return userDao.findAllByBloc(blocService.getBloc(numarBloc));
     }
 }

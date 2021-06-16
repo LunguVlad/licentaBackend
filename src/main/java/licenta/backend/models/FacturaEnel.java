@@ -29,6 +29,14 @@ public class FacturaEnel {
         this.valoareTotala = this.valoareScara1 + this.valoareScara2 + this.valoareScara3;
     }
 
+    public Bloc getBloc() {
+        return bloc;
+    }
+
+    public void setBloc(Bloc bloc) {
+        this.bloc = bloc;
+    }
+
     public int getId() {
         return id;
     }

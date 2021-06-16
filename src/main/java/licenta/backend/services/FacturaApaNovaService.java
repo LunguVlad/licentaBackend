@@ -15,18 +15,20 @@ import java.util.List;
 public class FacturaApaNovaService {
     @Autowired
     FacturaApaNovaDao facturaApaNovaDao;
+    @Autowired
+    private BlocService blocService;
 
-    public List<FacturaApaNova> getAllFacturiApaNova() {
-        List<FacturaApaNova> facturiApaNova = new ArrayList<>();
-        facturaApaNovaDao.findAll().forEach(facturaApaNova -> facturiApaNova.add(facturaApaNova));
-
-        return facturiApaNova;
+    public List<FacturaApaNova> getAllFacturiApaNova(int numarBloc) {
+        return facturaApaNovaDao.findAllByBloc(blocService.getBloc(numarBloc));
     }
 
-    public int createFactura(FacturaApaNova factura) {
+    public int createFactura(FacturaApaNova factura, int numarBloc) {
         factura.setTarif();
-        factura.setLuna(String.valueOf(LocalDate.now().getMonthValue()));
-        factura.setAn(String.valueOf(LocalDate.now().getYear()));
+        if (factura.getLuna() == null || factura.getAn() == null) {
+            factura.setLuna(String.valueOf(LocalDate.now().getMonthValue()));
+            factura.setAn(String.valueOf(LocalDate.now().getYear()));
+        }
+        factura.setBloc(blocService.getBloc(numarBloc));
         facturaApaNovaDao.save(factura);
         return 1;
     }

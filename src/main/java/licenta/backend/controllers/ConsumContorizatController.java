@@ -19,10 +19,10 @@ public class ConsumContorizatController {
         return ResponseEntity.ok(consumContorizatService.getAllConsumuriContorizate());
     }
 
-    @PostMapping
-    public ResponseEntity createFacturaApaNova(@RequestBody ConsumContorizat consumContorizat){
+    @PostMapping("/{numarBloc}")
+    public ResponseEntity createFacturaApaNova(@RequestBody ConsumContorizat consumContorizat, @PathVariable int numarBloc){
         try {
-            consumContorizatService.addConsum(consumContorizat);
+            consumContorizatService.addConsum(consumContorizat,numarBloc);
             return ResponseEntity.ok(true);
         }catch (Exception ex){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

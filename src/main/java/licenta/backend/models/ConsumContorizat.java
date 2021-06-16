@@ -43,6 +43,13 @@ public class ConsumContorizat {
         this.consumApaReceMenajer = consumApaReceMenajer;
     }
 
+    public Bloc getBloc() {
+        return bloc;
+    }
+
+    public void setBloc(Bloc bloc) {
+        this.bloc = bloc;
+    }
 
     public double getConsumApaCaldaScara1() {
         return consumApaCaldaScara1;

@@ -13,6 +13,8 @@ import java.util.List;
 public class ConsumContorizatService {
     @Autowired
     private ConsumContorizatDao consumContorizatDao;
+    @Autowired
+    private BlocService blocService;
 
     public List<ConsumContorizat> getAllConsumuriContorizate() {
         List<ConsumContorizat> consumuriContorizate = new ArrayList<>();
@@ -21,7 +23,8 @@ public class ConsumContorizatService {
         return consumuriContorizate;
     }
 
-    public int addConsum(ConsumContorizat consum) {
+    public int addConsum(ConsumContorizat consum, int numarBloc) {
+        consum.setBloc( blocService.getBloc(numarBloc));
         consumContorizatDao.save(consum);
         return 1;
     }

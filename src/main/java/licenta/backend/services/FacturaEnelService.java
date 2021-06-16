@@ -1,6 +1,7 @@
 package licenta.backend.services;
 
 import licenta.backend.daos.FacturaEnelDao;
+import licenta.backend.models.Bloc;
 import licenta.backend.models.FacturaEnel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,19 +14,22 @@ import java.util.List;
 public class FacturaEnelService {
 
     @Autowired
-    FacturaEnelDao facturaEnelDao;
+    private FacturaEnelDao facturaEnelDao;
 
-    public List<FacturaEnel> getAllFacturiEnel() {
-        List<FacturaEnel> facturiEnel = new ArrayList<>();
-        facturaEnelDao.findAll().forEach(facturaEnel -> facturiEnel.add(facturaEnel));
-        return facturiEnel;
+    @Autowired
+    private BlocService blocService;
+
+    public List<FacturaEnel> getAllFacturiEnel(int numarBloc) {
+        return facturaEnelDao.findAllByBloc(blocService.getBloc(numarBloc));
     }
 
-    public void createFactura(FacturaEnel facturaEnel) {
+    public void createFactura(FacturaEnel facturaEnel, int numarBloc) {
         facturaEnel.setValoareTotala();
-        facturaEnel.setLuna(String.valueOf(LocalDate.now().getMonthValue()));
-        facturaEnel.setAn(String.valueOf(LocalDate.now().getYear()));
-
+        if(facturaEnel.getLuna()==null || facturaEnel.getAn()==null) {
+            facturaEnel.setLuna(String.valueOf(LocalDate.now().getMonthValue()));
+            facturaEnel.setAn(String.valueOf(LocalDate.now().getYear()));
+        }
+        facturaEnel.setBloc(blocService.getBloc(numarBloc));
         facturaEnelDao.save(facturaEnel);
     }
 

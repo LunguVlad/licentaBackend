@@ -41,6 +41,14 @@ public class FacturaApaNova {
     }
 
 
+    public Bloc getBloc() {
+        return bloc;
+    }
+
+    public void setBloc(Bloc bloc) {
+        this.bloc = bloc;
+    }
+
     public double getPretConsumApaCaldaRestant() {
         return pretConsumApaCaldaRestant;
     }

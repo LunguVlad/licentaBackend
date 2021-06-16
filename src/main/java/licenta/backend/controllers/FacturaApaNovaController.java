@@ -17,15 +17,15 @@ public class FacturaApaNovaController {
     @Autowired
     FacturaApaNovaService facturaApaNovaService;
 
-    @GetMapping
-    public ResponseEntity getAllFacturiApaNova(){
-        return ResponseEntity.ok(facturaApaNovaService.getAllFacturiApaNova());
+    @GetMapping("/{numarBloc}")
+    public ResponseEntity getAllFacturiApaNova(@PathVariable int numarBloc){
+        return ResponseEntity.ok(facturaApaNovaService.getAllFacturiApaNova(numarBloc));
     }
 
-    @PostMapping("create")
-    public ResponseEntity createFacturaApaNova(@RequestBody FacturaApaNova facturaApaNova){
+    @PostMapping("create/{numarBloc}")
+    public ResponseEntity createFacturaApaNova(@RequestBody FacturaApaNova facturaApaNova, @PathVariable int numarBloc){
         try {
-            facturaApaNovaService.createFactura(facturaApaNova);
+            facturaApaNovaService.createFactura(facturaApaNova,numarBloc);
             return ResponseEntity.ok(true);
         }catch (Exception ex){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

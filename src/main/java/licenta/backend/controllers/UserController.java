@@ -35,6 +35,15 @@ public class UserController {
         }
     }
 
+    @GetMapping("{numarBloc}")
+    public ResponseEntity getUserByEmail(@PathVariable int numarBloc){
+        try {
+            return ResponseEntity.ok(userService.getUsersByBloc(numarBloc));
+        }catch (NullPointerException ex){
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping("/login/pls")
     public ResponseEntity getUserByAccount(@RequestBody User user){
         try{
@@ -64,10 +73,10 @@ public class UserController {
         }
     }
 
-    @PostMapping(path = "createUser")
-    public ResponseEntity createUser(@RequestBody User user){
+    @PostMapping(path = "createUser/{numarBloc}")
+    public ResponseEntity createUser(@RequestBody User user,@PathVariable int numarBloc){
         try {
-            userService.createUser(user);
+            userService.createUser(user,numarBloc);
             return ResponseEntity.ok(true);
         }catch (Exception ex){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

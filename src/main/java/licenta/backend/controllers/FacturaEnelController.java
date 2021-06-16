@@ -17,15 +17,15 @@ public class FacturaEnelController {
     FacturaEnelService facutraEnelService;
 
 
-    @GetMapping
-    public ResponseEntity getAllFacturiApaNova(){
-        return ResponseEntity.ok(facutraEnelService.getAllFacturiEnel());
+    @GetMapping("/{numarBloc}")
+    public ResponseEntity getAllFacturiApaNova( @PathVariable int numarBloc){
+        return ResponseEntity.ok(facutraEnelService.getAllFacturiEnel(numarBloc));
     }
 
-    @PostMapping("create")
-    public ResponseEntity createFacturaApaNova(@RequestBody FacturaEnel facturaEnel){
+    @PostMapping("create/{numarBloc}")
+    public ResponseEntity createFacturaApaNova(@RequestBody FacturaEnel facturaEnel, @PathVariable int numarBloc){
         try {
-            facutraEnelService.createFactura(facturaEnel);
+            facutraEnelService.createFactura(facturaEnel,numarBloc);
             return ResponseEntity.ok(true);
         }catch (Exception ex){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -1,5 +1,8 @@
 package licenta.backend.models;
 
+import licenta.backend.services.BlocService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -20,11 +23,15 @@ public class User implements Serializable {
     private int phoneNumber;
     private int accountType;
     private int scara;
-    @Column(unique = true)
     private int apartament;
     private int nrPersoane;
     private double cotaIndiviza;
     boolean centrala;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "numarBloc" , referencedColumnName = "numarBloc")
+    private Bloc bloc;
+
 
 
 
@@ -83,6 +90,14 @@ public class User implements Serializable {
 
     public boolean isCentrala() {
         return centrala;
+    }
+
+    public Bloc getBloc() {
+        return bloc;
+    }
+
+    public void setBloc(Bloc bloc) {
+        this.bloc = bloc;
     }
 
     public void setCentrala(boolean centrala) {
