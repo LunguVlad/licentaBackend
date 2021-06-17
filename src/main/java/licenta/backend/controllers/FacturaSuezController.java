@@ -18,15 +18,15 @@ public class FacturaSuezController {
     FacturaSuezService facturaSuezService;
 
 
-    @GetMapping
-    public ResponseEntity getAllFacturiApaNova(){
-        return ResponseEntity.ok(facturaSuezService.getAllFacturiSuez());
+    @GetMapping("/{numarBloc}")
+    public ResponseEntity getAllFacturiApaNova(@PathVariable int numarBloc){
+        return ResponseEntity.ok(facturaSuezService.getAllFacturiSuez(numarBloc));
     }
 
-    @PostMapping("create")
-    public ResponseEntity createFacturaApaNova(@RequestBody FacturaSuez facturaSuez){
+    @PostMapping("create/{numarBloc}")
+    public ResponseEntity createFacturaApaNova(@RequestBody FacturaSuez facturaSuez, @PathVariable int numarBloc){
         try {
-            facturaSuezService.createFactura(facturaSuez);
+            facturaSuezService.createFactura(facturaSuez,numarBloc);
             return ResponseEntity.ok(true);
         }catch (Exception ex){
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -14,4 +14,6 @@ public interface UserDao extends CrudRepository<User,Integer> {
     User findByEmailAndPassword(String email,String password);
     User findByApartament(int apartament);
     List<User> findAllByBloc(Bloc bloc);
+
+
 }

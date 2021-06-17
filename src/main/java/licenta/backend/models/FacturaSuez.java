@@ -16,7 +16,7 @@ public class FacturaSuez {
     private double valoareTotala;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bloc" , referencedColumnName = "numarBloc")
+    @JoinColumn(name = "numarBloc" , referencedColumnName = "numarBloc")
     private Bloc bloc;
 
     public FacturaSuez() {
@@ -25,6 +25,15 @@ public class FacturaSuez {
 
     public void calculeazaValoareTotala(){
         this.valoareTotala = this.valoareScara1 + this.valoareScara2 + this.valoareScara3;
+    }
+
+
+    public Bloc getBloc() {
+        return bloc;
+    }
+
+    public void setBloc(Bloc bloc) {
+        this.bloc = bloc;
     }
 
     public int getId() {

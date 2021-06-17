@@ -5,10 +5,12 @@ import org.springframework.context.annotation.Primary;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serial;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "bloc")
-public class Bloc {
+public class Bloc implements Serializable {
     @Id
     private int numarBloc;
     private int numarScari;

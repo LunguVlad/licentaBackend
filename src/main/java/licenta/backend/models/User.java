@@ -1,5 +1,6 @@
 package licenta.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import licenta.backend.services.BlocService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,6 +31,7 @@ public class User implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "numarBloc" , referencedColumnName = "numarBloc")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Bloc bloc;
 
 

@@ -26,7 +26,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @GetMapping("{email}")
+    @GetMapping("/email/{email}")
     public ResponseEntity getUserByEmail(@PathVariable String email){
         try {
             return ResponseEntity.ok(userService.getUserByEmail(email));
@@ -35,9 +35,11 @@ public class UserController {
         }
     }
 
-    @GetMapping("{numarBloc}")
+    @GetMapping("/bloc/{numarBloc}")
     public ResponseEntity getUserByEmail(@PathVariable int numarBloc){
         try {
+            System.out.println("X");
+            System.out.println(numarBloc);
             return ResponseEntity.ok(userService.getUsersByBloc(numarBloc));
         }catch (NullPointerException ex){
             return ResponseEntity.notFound().build();
@@ -76,6 +78,7 @@ public class UserController {
     @PostMapping(path = "createUser/{numarBloc}")
     public ResponseEntity createUser(@RequestBody User user,@PathVariable int numarBloc){
         try {
+            System.out.println("NUMAR BLOC" + numarBloc);
             userService.createUser(user,numarBloc);
             return ResponseEntity.ok(true);
         }catch (Exception ex){

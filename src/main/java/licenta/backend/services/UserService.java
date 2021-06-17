@@ -90,6 +90,7 @@ public class UserService {
     }
 
     public List<User> getUsersByBloc(int numarBloc) {
+        System.out.println("GETCHECK");
         return userDao.findAllByBloc(blocService.getBloc(numarBloc));
     }
 }

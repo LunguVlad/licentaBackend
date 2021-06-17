@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="Blfactura_enel")
+@Table(name="factura_enel")
 public class FacturaEnel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +18,7 @@ public class FacturaEnel {
     private double valoareTotala;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bloc" , referencedColumnName = "numarBloc")
+    @JoinColumn(name = "numarBloc" , referencedColumnName = "numarBloc")
     private Bloc bloc;
 
     public FacturaEnel(){

@@ -18,6 +18,7 @@ public class BlocController {
         return ResponseEntity.ok(blocService.getBloc(numarBloc));
     }
 
+    @PostMapping("create")
     public ResponseEntity createBloc(@RequestBody Bloc bloc){
         return ResponseEntity.ok(blocService.addBloc(bloc));
     }
