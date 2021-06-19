@@ -13,7 +13,7 @@ public class FacturaApaNova {
     private String luna;
     private String an;
 
-    //apa calda
+    //apa rece
     private double pretConsumApaRece;
     private double pretConsumApaReceRestant;
     private double consumFacturatApaRece;

@@ -18,7 +18,7 @@ public class CheltuialaController {
         return ResponseEntity.ok(cheltuialaService.getAllConsumuriContorizate(numarBloc));
     }
 
-    @PostMapping("/{numarBloc}")
+    @PostMapping("create/{numarBloc}")
     public ResponseEntity createCheltuiala(@RequestBody Cheltuiala cheltuiala, @PathVariable int numarBloc){
         return ResponseEntity.ok(cheltuialaService.addCheltuiala(cheltuiala,numarBloc));
     }
