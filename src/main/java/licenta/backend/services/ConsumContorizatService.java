@@ -16,11 +16,8 @@ public class ConsumContorizatService {
     @Autowired
     private BlocService blocService;
 
-    public List<ConsumContorizat> getAllConsumuriContorizate() {
-        List<ConsumContorizat> consumuriContorizate = new ArrayList<>();
-        consumContorizatDao.findAll().forEach(consumuriContorizate::add);
-
-        return consumuriContorizate;
+    public List<ConsumContorizat> getAllConsumuriContorizate(int numarBloc) {
+        return consumContorizatDao.findAllByBloc(blocService.getBloc(numarBloc));
     }
 
     public int addConsum(ConsumContorizat consum, int numarBloc) {

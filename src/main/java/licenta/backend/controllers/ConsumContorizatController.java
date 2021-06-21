@@ -14,12 +14,12 @@ public class ConsumContorizatController {
     @Autowired
     private ConsumContorizatService consumContorizatService;
 
-    @GetMapping
-    public ResponseEntity getAllFacturiApaNova(){
-        return ResponseEntity.ok(consumContorizatService.getAllConsumuriContorizate());
+    @GetMapping("/{numarBloc}")
+    public ResponseEntity getAllFacturiApaNova(@PathVariable int numarBloc){
+        return ResponseEntity.ok(consumContorizatService.getAllConsumuriContorizate(numarBloc));
     }
 
-    @PostMapping("/{numarBloc}")
+    @PostMapping("create/{numarBloc}")
     public ResponseEntity createFacturaApaNova(@RequestBody ConsumContorizat consumContorizat, @PathVariable int numarBloc){
         try {
             consumContorizatService.addConsum(consumContorizat,numarBloc);
