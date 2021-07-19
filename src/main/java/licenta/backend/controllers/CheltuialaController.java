@@ -1,6 +1,5 @@
 package licenta.backend.controllers;
 
-import licenta.backend.daos.CheltuialaDao;
 import licenta.backend.models.Cheltuiala;
 import licenta.backend.services.CheltuialaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ public class CheltuialaController {
 
     @GetMapping("/{numarBloc}")
     public ResponseEntity getAllCheltuieliByBloc(@PathVariable int numarBloc){
-        return ResponseEntity.ok(cheltuialaService.getAllConsumuriContorizate(numarBloc));
+        return ResponseEntity.ok(cheltuialaService.getAllCheltuieli(numarBloc));
     }
 
     @PostMapping("create/{numarBloc}")

@@ -13,14 +13,17 @@ public class ListaPlata {
 
 
     //Cheltiuieli comune/nrPers
-    private double enelRebu; //enel + rebu /nrPers
-    private double gaze;
+    private double enel; //enel /nrPers
+    private double gaze; // SUEZ
 
     //Consumuri contorizate
     private double apaRece;
     private double apaCalda;
     private double diferentaApaRece;
     private double diferentaApaCalda;
+
+    //chelt comune/ numar de persoane
+    private double cheltuieliRepartizatePeNumarDePersoane;
 
     //Chelt comune/ NUMAR DE APARTAMENTE
     private double cheltuieliRepartizatePeApartament;
@@ -40,6 +43,14 @@ public class ListaPlata {
     private User user;
 
     public ListaPlata() {
+    }
+
+    public double getCheltuieliRepartizatePeNumarDePersoane() {
+        return cheltuieliRepartizatePeNumarDePersoane;
+    }
+
+    public void setCheltuieliRepartizatePeNumarDePersoane(double cheltuieliRepartizatePeNumarDePersoane) {
+        this.cheltuieliRepartizatePeNumarDePersoane = cheltuieliRepartizatePeNumarDePersoane;
     }
 
     public int getId() {
@@ -66,12 +77,12 @@ public class ListaPlata {
         this.an = an;
     }
 
-    public double getEnelRebu() {
-        return enelRebu;
+    public double getEnel() {
+        return enel;
     }
 
-    public void setEnelRebu(double enel) {
-        this.enelRebu = enel;
+    public void setEnel(double enel) {
+        this.enel = enel;
     }
 
     public double getGaze() {
@@ -150,8 +161,8 @@ public class ListaPlata {
         return totalPlata;
     }
 
-    public void setTotalPlata(double totalPlata) {
-        this.totalPlata = totalPlata;
+    public void setTotalPlata() {
+        this.totalPlata = this.enel + this.gaze + this.apaRece + this.apaCalda + this.diferentaApaRece + this.diferentaApaCalda + this.cheltuieliRepartizatePeNumarDePersoane + this.cheltuieliRepartizatePeApartament + this.cheltuieliComunePeCotaIndiviza + this.restanteInteretinere;
     }
 
     public User getUser() {
@@ -162,18 +173,20 @@ public class ListaPlata {
         this.user = user;
     }
 
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("ListaPlata{");
         sb.append("id=").append(id);
         sb.append(", luna='").append(luna).append('\'');
         sb.append(", an='").append(an).append('\'');
-        sb.append(", enelRebu=").append(enelRebu);
+        sb.append(", enel=").append(enel);
         sb.append(", gaze=").append(gaze);
         sb.append(", apaRece=").append(apaRece);
         sb.append(", apaCalda=").append(apaCalda);
         sb.append(", diferentaApaRece=").append(diferentaApaRece);
         sb.append(", diferentaApaCalda=").append(diferentaApaCalda);
+        sb.append(", cheltuieliRepartizatePeNumarDePersoane=").append(cheltuieliRepartizatePeNumarDePersoane);
         sb.append(", cheltuieliRepartizatePeApartament=").append(cheltuieliRepartizatePeApartament);
         sb.append(", cheltuieliComunePeCotaIndiviza=").append(cheltuieliComunePeCotaIndiviza);
         sb.append(", restanteInteretinere=").append(restanteInteretinere);

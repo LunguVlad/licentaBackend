@@ -50,7 +50,6 @@ public class UserService {
 
     public int updateUser(String email, User updatedUser) {
 
-        //TODO validations for all fields
         User userToChange = userDao.findByEmail(email);
 
         userToChange.setFirstName(updatedUser.getFirstName());

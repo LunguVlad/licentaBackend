@@ -92,4 +92,19 @@ public class FacturaEnel {
     public void setValoareTotala() {
         this.valoareTotala = this.valoareScara1 + this.valoareScara2 + this.valoareScara3;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("FacturaEnel{");
+        sb.append("id=").append(id);
+        sb.append(", luna='").append(luna).append('\'');
+        sb.append(", an='").append(an).append('\'');
+        sb.append(", valoareScara1=").append(valoareScara1);
+        sb.append(", valoareScara2=").append(valoareScara2);
+        sb.append(", valoareScara3=").append(valoareScara3);
+        sb.append(", valoareTotala=").append(valoareTotala);
+        sb.append(", bloc=").append(bloc);
+        sb.append('}');
+        return sb.toString();
+    }
 }

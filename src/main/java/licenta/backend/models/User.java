@@ -11,9 +11,6 @@ import java.io.Serializable;
 @Entity
 @Table(name="[user]")
 public class User implements Serializable {
-//    public final int ADMINISTRATOR = 0;
-//    public final int LOCATAR = 1;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -22,7 +19,7 @@ public class User implements Serializable {
     private String email;
     private String password;
     private int phoneNumber;
-    private int accountType;
+    private int accountType; // 0 = Administrator , 1 = Locatar
     private int scara;
     private int apartament;
     private int nrPersoane;
