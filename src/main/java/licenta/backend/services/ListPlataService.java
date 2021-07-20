@@ -220,4 +220,10 @@ public class ListPlataService {
     public ListaPlata getListaPlataById(int listaPlataId) {
         return listaPlataDao.findById(listaPlataId).get();
     }
+
+    public List<ListaPlata> getAllListaPlata(int numarBloc) {
+        List<ListaPlata> listaPlati = listaPlataDao.findByLunaAndAn(String.valueOf(LocalDate.now().minusMonths(1).getMonthValue()),String.valueOf(LocalDate.now().minusMonths(1).getYear()));
+        listaPlati = listaPlati.stream().filter(listaPlata -> listaPlata.getUser().getBloc().getNumarBloc() == numarBloc).collect(Collectors.toList());
+        return listaPlati;
+    }
 }

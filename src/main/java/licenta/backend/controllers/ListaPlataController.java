@@ -46,4 +46,14 @@ public class ListaPlataController {
         }
 
     }
+
+    @GetMapping("/getListaPlati/{numarBloc}")
+    public ResponseEntity getAllListaPlata(@PathVariable int numarBloc){
+        try {
+            return ResponseEntity.ok(listaPlataService.getAllListaPlata(numarBloc));
+        }catch (Exception ex){
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
 }
